@@ -2,9 +2,9 @@
 
 Advertisment webside, to buy or sell things :)
 
-##Project setup:
+## Project setup:
 
-###Setup client
+### Setup client
 
 Go to client folder:
 
@@ -26,7 +26,7 @@ npm run serve
 
 By defult it will be runed on the [http//localhost:8080/](http//localhost:8080/)
 
-###Setup server
+### Setup server
 
 Go to server folder:
 
