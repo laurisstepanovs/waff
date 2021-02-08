@@ -1,7 +1,5 @@
 .DS_Store
-/client/node_modules
 /server/node_modules
-/client/dist
 
 # local env files
 /server/.env.local
@@ -20,9 +18,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
-
-/client/yarn.lock
-/client/package-lock.json
 
 /server/yarn.lock
 /server/package-lock.json
