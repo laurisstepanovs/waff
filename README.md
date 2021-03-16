@@ -34,6 +34,12 @@ Go to server folder:
 cd server
 ```
 
+Create .env file:
+
+```
+cp .env.example .env
+```
+
 Run migrations:
 
 ```
@@ -46,7 +52,11 @@ Create encryption keys needed to generate secure access tokens:
 php artisan passport:install
 ```
 
-Set the ```APP_KEY``` value
+Set the ```APP_KEY``` value:
+
+```
+php artisan key:generate
+```
 
 Install all needed server dependencies.
 

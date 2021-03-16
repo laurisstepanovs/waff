@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <router-link to="/add_post" class="add-new-post-button">Add new post</router-link>
+    <router-link to="/new_post" class="add-new-post-button">Add new post</router-link>
     <router-link to="/posts" class="menu-item">Cars</router-link>
     <router-link to="/posts" class="menu-item">Phones</router-link>
   </div>
