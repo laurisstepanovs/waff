@@ -34,6 +34,20 @@ Go to server folder:
 cd server
 ```
 
+Run migrations:
+
+```
+php artisan migrate
+```
+
+Create encryption keys needed to generate secure access tokens:
+
+```
+php artisan passport:install
+```
+
+Set the ```APP_KEY``` value
+
 Install all needed server dependencies.
 
 ```
