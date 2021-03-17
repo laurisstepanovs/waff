@@ -1,18 +1,27 @@
 <template>
   <div class="home">
     <router-link to="/new_post" class="add-new-post-button">Add new post</router-link>
-    <router-link to="/posts" class="menu-item">Cars</router-link>
-    <router-link to="/posts" class="menu-item">Phones</router-link>
+    <router-link to="/posts/cars" class="menu-item">Cars</router-link>
+    <router-link to="/posts/phones" class="menu-item">Phones</router-link>
 
 
     <h3>Latests posts</h3>
     <template v-if="posts">
       <template v-if="posts.length !== 0">
-        <div class="menu-item" v-for="(item, i) in posts" :key="i">
-          <h3 class="title">{{item.title}}</h3>
+        <div class="menu-item" v-for="(item, i) in posts.data" :key="i">
+          <router-link :to="getLink(item.id)" class="title">{{item.title}}</router-link>
           <p class="desc">{{item.desc}}</p>
           <p class="desc">{{item.created_at}}</p>
         </div>
+        <el-pagination
+            background
+            hide-on-single-page="true"
+            layout="prev, pager, next"
+            @current-change="getData"
+            :total="posts.last_page*10">
+        </el-pagination>
+        <br>
+        <br>
       </template>
       <template v-else>
         There is no posts at the moment
@@ -36,10 +45,24 @@ export default defineComponent({
       }).catch(error => {
         console.log(error);
       });
-    })
+    });
+
+    const getData = (pageId) => {
+      Posts.getCurrentPagePosts(pageId).then(data =>{
+        posts.value = data.data;
+      }).catch(error => {
+        console.log(error);
+      });
+    }
+
+    const getLink = (postId) => {
+      return "/post_page/"+postId;
+    }
 
     return {
-      posts
+      posts,
+      getData,
+      getLink
     }
   }
 });

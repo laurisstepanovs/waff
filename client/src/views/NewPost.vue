@@ -4,6 +4,11 @@
       <h1>Add new post</h1>
       <label for="title">Post title</label>
       <input v-model="form.title" id="title" type="text">
+      <label for="section">Section</label>
+      <select name="section" id="section" v-model="form.section">
+        <option value="Cars">Cars</option>
+        <option value="Phones">Phones</option>
+      </select>
       <label for="desc">Description</label>
       <textarea v-model="form.desc" id="desc" type="password" />
       <button type="submit">Add</button>
@@ -25,6 +30,15 @@
   }
 
   textarea {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+
+  select {
     box-sizing: border-box;
     display: block;
     width: 100%;
@@ -78,6 +92,7 @@ export default defineComponent({
   setup(){
     const form = ref({
       title: "",
+      section: "Cars",
       desc: ""
     })
 
@@ -90,7 +105,7 @@ export default defineComponent({
         console.log(data);
         router.push({ path: 'home' });
       }).catch(error => {
-        errors.value = error.response.data.errors[Object.keys(error.response.data.errors)[0]][0];
+        console.log(error);
       });
     }
 

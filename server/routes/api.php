@@ -27,3 +27,5 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth:api');
 Route::post('/add_post', [PostsController::class, 'addPost']);
 Route::get('/posts', [PostsController::class, 'getAllPosts']);
+Route::post('/current_post/{post_id}', [PostsController::class, 'getCurrentPost']);
+Route::post('/post_by_section/{section}', [PostsController::class, 'getPostsBySection']);

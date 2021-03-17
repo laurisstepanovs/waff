@@ -1,9 +1,9 @@
 <template>
     <div class="header">
-        <div class="logo">
+        <router-link to="/home" class="logo">
             <h1 class="reset">Waff</h1>
             <span class="badget">BETA</span>
-        </div>
+        </router-link>
         <div class="toolbar">
             <button v-if="isAuth" @click="logout()" class="header-button reset">Logout</button>
         </div>

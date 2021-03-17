@@ -17,7 +17,7 @@ const routes = [
               component: () => import("../views/About.vue")
           },
           {
-              path: "/posts",
+              path: "/posts/:section",
               name: "posts",
               component: () => import("../views/PostsPage.vue")
           },
@@ -30,6 +30,11 @@ const routes = [
               path: "/new_post",
               name: "new_post",
               component: () => import("../views/NewPost.vue")
+          },
+          {
+              path: "/post_page/:post_id",
+              name: "post_page",
+              component: () => import("../views/PostPage.vue")
           },
       ]
   },
