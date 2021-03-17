@@ -4,28 +4,28 @@
     <router-link to="/posts/phones" class="menu-item">Phones</router-link>
 
 
-    <h3>Latests posts</h3>
-    <template v-if="posts">
-      <template v-if="posts.length !== 0">
-        <div class="menu-item" v-for="(item, i) in posts.data" :key="i">
-          <router-link :to="getLink(item.id)" class="title">{{item.title}}</router-link>
-          <p class="desc">{{item.desc}}</p>
-          <p class="desc">{{item.created_at}}</p>
-        </div>
-        <el-pagination
-            background
-            hide-on-single-page="true"
-            layout="prev, pager, next"
-            @current-change="getData"
-            :total="posts.last_page*10">
-        </el-pagination>
-        <br>
-        <br>
-      </template>
-      <template v-else>
-        There is no posts at the moment
-      </template>
-    </template>
+<!--    <h3>Latests posts</h3>-->
+<!--    <template v-if="posts">-->
+<!--      <template v-if="posts.length !== 0">-->
+<!--        <div class="menu-item" v-for="(item, i) in posts.data" :key="i">-->
+<!--          <router-link :to="getLink(item.id)" class="title">{{item.title}}</router-link>-->
+<!--          <p class="desc">{{item.desc}}</p>-->
+<!--          <p class="desc">{{item.created_at}}</p>-->
+<!--        </div>-->
+<!--        <el-pagination-->
+<!--            background-->
+<!--            hide-on-single-page="true"-->
+<!--            layout="prev, pager, next"-->
+<!--            @current-change="getData"-->
+<!--            :total="posts.last_page*10">-->
+<!--        </el-pagination>-->
+<!--        <br>-->
+<!--        <br>-->
+<!--      </template>-->
+<!--      <template v-else>-->
+<!--        There is no posts at the moment-->
+<!--      </template>-->
+<!--    </template>-->
   </div>
 </template>
 

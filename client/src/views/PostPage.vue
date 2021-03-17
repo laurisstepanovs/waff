@@ -2,6 +2,7 @@
   <div>
     <h1>{{postData.title}}</h1>
     <p>{{postData.desc}}</p>
+    <img :src="getPath(postData.path)" alt="post_image">
   </div>
 </template>
 
@@ -27,8 +28,13 @@ export default defineComponent({
       console.log(error);
     });
 
+    const getPath = (path) => {
+      return "media/" + path;
+    }
+
     return {
-      postData
+      postData,
+      getPath
     }
   }
 });

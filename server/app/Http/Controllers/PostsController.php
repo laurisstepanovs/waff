@@ -11,18 +11,23 @@ class PostsController extends Controller
 {
     public function addPost(Request $request)
     {
-        $request->validate([
-            'title' => ['required'],
-            'desc' => ['required']
-        ]);
+            $request->validate([
+                'title' => ['required'],
+                'desc' => ['required']
+            ]);
 
-        $post = Posts::create([
-            'title' => $request->title,
-            'section' => $request->section,
-            'desc' => $request->desc,
-        ]);
+            $file = $request->file('image');
+            $name = '/post_images/' . uniqid() . '.' . $file->extension();
+            $file->storePubliclyAs('public', $name);
 
-        return $post;
+            $post = Posts::create([
+                'title' => $request->title,
+                'section' => $request->section,
+                'path' => $name,
+                'desc' => $request->desc
+            ]);
+
+            return $post;
     }
 
     public function getAllPosts(){

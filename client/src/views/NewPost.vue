@@ -11,6 +11,7 @@
       </select>
       <label for="desc">Description</label>
       <textarea v-model="form.desc" id="desc" type="password" />
+      <input type="file" @change="setFile">
       <button type="submit">Add</button>
     </form>
   </div>
@@ -93,6 +94,7 @@ export default defineComponent({
     const form = ref({
       title: "",
       section: "Cars",
+      image: "",
       desc: ""
     })
 
@@ -101,7 +103,14 @@ export default defineComponent({
     const router = useRouter();
 
     const addRequest = () => {
-      Posts.addNew(form.value).then(data =>{
+      const formData = new FormData();
+
+      formData.append("title", form.value.title);
+      formData.append("section", form.value.section);
+      formData.append("image", form.value.image);
+      formData.append("desc", form.value.desc);
+
+      Posts.addNew(formData).then(data =>{
         console.log(data);
         router.push({ path: 'home' });
       }).catch(error => {
@@ -109,10 +118,15 @@ export default defineComponent({
       });
     }
 
+    const setFile = (e) => {
+      form.value.image = e.target.files[0];
+    }
+
     return {
       form,
       addRequest,
-      errors
+      errors,
+      setFile
     }
   }
 })

@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 /dist
+/public/media/post_images
 
 
 # local env files
