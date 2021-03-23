@@ -19,7 +19,6 @@
 
 <style lang="scss" scoped>
 .add_post {
-  width: 40%;
   margin: auto;
   height: auto;
   background-color: #cbd5e0;

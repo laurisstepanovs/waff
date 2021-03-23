@@ -67,7 +67,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style scoped>
     .menu-item {
         background: #cbd5e0;
         display: block;
@@ -75,22 +75,5 @@ export default defineComponent({
         padding-top: 20px;
         padding-bottom: 20px;
         width: 100%;
-    }
-
-    .add-new-post-button {
-        background: #a4d3fc;
-        display: block;
-        margin-bottom: 20px;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        width: 100%;
-    }
-
-    .title {
-      color: #0b2e13;
-    }
-
-    .desc {
-      color: #1e7e34;
     }
 </style>

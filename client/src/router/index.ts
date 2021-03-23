@@ -8,7 +8,7 @@ const routes = [
       children: [
           {
               path: "/home",
-              name: "Home",
+              name: "home",
               component: () => import("../views/Home.vue")
           },
           {
@@ -32,7 +32,7 @@ const routes = [
               component: () => import("../views/NewPost.vue")
           },
           {
-              path: "/post_page/:post_id",
+              path: "/posts/:section/:post_id",
               name: "post_page",
               component: () => import("../views/PostPage.vue")
           },

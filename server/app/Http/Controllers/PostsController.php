@@ -32,7 +32,7 @@ class PostsController extends Controller
 
     public function getAllPosts(){
         //example usage.
-        $posts = DB::table("posts")->orderBy("created_at", "desc")->paginate(10);
+        $posts = DB::table("posts")->orderBy("created_at", "desc")->paginate(16);
 
         return $posts;
     }
@@ -48,7 +48,7 @@ class PostsController extends Controller
         $finalSection = Str::ucfirst($section);
         $posts = DB::table("posts")->orderBy("created_at", "desc");
 
-        $result = $posts->where("section", $finalSection)->paginate(10);
+        $result = $posts->where("section", $finalSection)->paginate(16);
 
         return $result;
     }

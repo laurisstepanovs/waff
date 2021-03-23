@@ -30,6 +30,8 @@
         </el-col>
       </el-row>
     </el-header>
+    <el-page-header v-if="getSectionTitle" @back="goBack()" :content="getSectionTitle">
+    </el-page-header>
     <el-main>
       <router-view />
     </el-main>
@@ -39,12 +41,13 @@
 <script>
 import { defineComponent, computed } from "vue";
 import User from "@/apis/User";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 
 export default defineComponent({
     name: "Layout",
     setup(){
         const router = useRouter();
+        const route = useRoute();
 
         if(!window.localStorage.getItem("token")){
             router.push({ name: 'login' });
@@ -68,10 +71,22 @@ export default defineComponent({
           router.push({name: 'new_post'});
         }
 
+        const goBack = () => {
+          router.go(-1);
+        }
+
+        const getSectionTitle = computed(() => {
+          if (route.params.section){
+            return (route.params.section.charAt(0).toUpperCase() + route.params.section.slice(1));
+          }
+        });
+
         return {
             logout,
             isAuth,
-            toAdvertisement
+            toAdvertisement,
+            goBack,
+            getSectionTitle
         }
     }
 });
@@ -101,5 +116,11 @@ export default defineComponent({
 
     a {
       text-decoration: none;
+    }
+
+    .el-page-header {
+      padding: 20px 5px 20px 5px;
+      border: 1px solid #d7dae2;
+      border-radius: 4px;
     }
 </style>

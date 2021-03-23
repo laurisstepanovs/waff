@@ -2,7 +2,9 @@
   <div>
     <h1>{{postData.title}}</h1>
     <p>{{postData.desc}}</p>
-    <img :src="getPath(postData.path)" alt="post_image">
+    <el-image
+        :src="getPath(postData.path)"
+        fit="fit"></el-image>
   </div>
 </template>
 
