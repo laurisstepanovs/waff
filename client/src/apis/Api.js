@@ -4,7 +4,7 @@ axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
 
 const BaseApi = axios.create({
-    baseURL: "//sirual.site:8000/api"
+    baseURL: "https//sirual.site/api"
 });
 
 const Api = () => {
