@@ -86,7 +86,7 @@ export default defineComponent({
   background: #cbd5e0;
   display: inline-block;
   text-align: left;
-  margin: 20px;
+  margin-bottom: 20px;
 }
 
 .add-new-post-button {
@@ -123,11 +123,19 @@ export default defineComponent({
 .items-list{
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .post-parent{
   display: block;
   margin-right: auto;
   margin-left: auto;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .menu-item {
+    width: 100%;
+  }
 }
 </style>
