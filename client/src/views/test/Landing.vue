@@ -111,12 +111,12 @@
   html, body, #app {
     width: 100%;
     height: 100%;
-    font-size: 0;
   }
 
   .landing-wrapper {
     width: 100%;
     height: 100%;
+    font-size: 0;
     background-color: #ffffff;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
@@ -264,6 +264,7 @@
       }
 
       .image-wrapper {
+        position: static;
 
         .block-1 {
           background: url("https://s3-alpha-sig.figma.com/img/0e19/3e25/aaf3356eb76aad7a1f94d7c6a0213ede?Expires=1617580800&Signature=KqgLk2StEyxkHQ82HuRPKK3-bbVU0bhneMwAUxzbMqc1X49cGS8LDbah5WMDXZ8asPvaJP392B3hNYTaV4GNIXcsqOpcRFl~VWUhvXYXp2fJNNHe5SHDbNVguo~Mn5D1KBSX8JNnpbu3DT9A-RWJMAdFxktv05NSu9Fzxgi0EUw~DXl0H7rW1X4k3cAslXn15rRQ0OW-ePsbtym0UKnMM6hEnRzjX9k2I8xpXJd4xPWYywWyj5R~BO7tm94dU7~x~t1MgRo5S96nmdNA3zrZoVnQ8Su8jV9Z5DKH2Y8Lpd5V7vk0XEdp4DXeB-LdvMGm-GK7OAw2vFJZvKFFRjhnkg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA");
@@ -372,6 +373,19 @@
       font-size: 50px;
       margin-top: calc(100vh - 616px);
       margin-left: 100px;
+    }
+  }
+
+  @media only screen and (min-width: 2560px) {
+    .landing-wrapper {
+      .content {
+        .image-wrapper {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 600px;
+        }
+      }
     }
   }
 
