@@ -4,17 +4,19 @@
       <template v-if="posts.length !== 0">
         <div class="post-parent">
         <div class="items-list">
-          <div class="menu-item" v-for="(item, i) in posts.data" :key="i">
-            <div class="img-el">
-              <el-image
-                  style="width: 100px; height: 100px"
-                  :src="getPath(item.path)"
-                  fit="cover"></el-image>
-            </div>
-            <div class="other-el">
-              <router-link :to="getLink( item.section, item.id)" class="title">{{item.title}}</router-link>
-              <p class="desc">{{item.desc}}</p>
-              <p class="desc">{{item.created_at}}</p>
+          <div class="item-wrapper" v-for="(item, i) in posts.data" :key="i">
+            <div class="menu-item">
+              <div class="img-el">
+                <el-image
+                    style="width: 100px; height: 100px"
+                    :src="getPath(item.path)"
+                    fit="cover"></el-image>
+              </div>
+              <div class="other-el">
+                <router-link :to="getLink( item.section, item.id)" class="title">{{item.title}}</router-link>
+                <p class="desc">{{item.desc}}</p>
+                <p class="desc">{{item.created_at}}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -82,11 +84,21 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+* {
+  box-sizing: border-box;
+}
+
+.item-wrapper {
+  width: 25%;
+  padding: 10px;
+}
+
 .menu-item {
   background: #cbd5e0;
   display: inline-block;
   text-align: left;
-  margin-bottom: 20px;
+  width: 100%;
+  padding: 10px;
 }
 
 .add-new-post-button {
@@ -110,32 +122,50 @@ export default defineComponent({
 
 .img-el{
   display: inline-block;
-  margin: 20px 20px 20px 20px;
 }
 
 .other-el{
   display: inline-block;
-  margin: 10px 10px 10px 10px;
   width: 266px;
   overflow: hidden;
+  margin-left: 10px;
 }
 
 .items-list{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: end;
 }
 
 .post-parent{
   display: block;
-  margin-right: auto;
-  margin-left: auto;
 }
 
+@media only screen and (max-width: 1440px) {
+  .item-wrapper {
+    width: 50%;
+  }
+}
 
 @media only screen and (max-width: 768px) {
-  .menu-item {
+  .item-wrapper {
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .item-wrapper {
+    width: 100%;
+  }
+
+  .el-card__body, .el-main {
+    padding: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .img-el {
+    margin: 10px auto 10px auto;
   }
 }
 </style>

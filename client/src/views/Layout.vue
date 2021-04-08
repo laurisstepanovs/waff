@@ -123,4 +123,10 @@ export default defineComponent({
       border: 1px solid #d7dae2;
       border-radius: 4px;
     }
+
+    @media only screen and (max-width: 425px) {
+      .el-card__body, .el-main {
+        padding: 0;
+      }
+    }
 </style>
