@@ -35,3 +35,7 @@ const config: Array<AdMenu> = [
       ]
     }
 ];
+
+export default config;
+
+export { AdMenu };

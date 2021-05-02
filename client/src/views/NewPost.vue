@@ -5,6 +5,7 @@
       <label for="title">Post title</label>
       <input v-model="form.title" id="title" type="text">
       <label for="section">Section</label>
+      <el-cascader :options="options" clearable></el-cascader>
       <select name="section" id="section" v-model="form.section">
         <option value="Cars">Cars</option>
         <option value="Phones">Phones</option>

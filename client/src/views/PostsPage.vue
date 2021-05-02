@@ -134,7 +134,7 @@ export default defineComponent({
 .items-list{
   display: flex;
   flex-wrap: wrap;
-  justify-content: end;
+  justify-content: flex-start;
 }
 
 .post-parent{

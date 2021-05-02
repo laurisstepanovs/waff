@@ -1,7 +1,10 @@
 <template>
   <div class="home">
-    <router-link to="/posts/cars" class="menu-item">Cars</router-link>
-    <router-link to="/posts/phones" class="menu-item">Phones</router-link>
+    <template v-for="(item, i) in preview" :key="i">
+      <div v-if="!final" @click="next(item)"  class="menu-item">{{item.name}}</div>
+      <router-link v-if="final" :to="`/posts/${item}`" class="menu-item">{{item}}</router-link>
+<!--      <router-link :to="`/posts/${item.name}`" class="menu-item">{{item.name}}</router-link>-->
+    </template>
 
 
 <!--    <h3>Latests posts</h3>-->
@@ -29,39 +32,47 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
-import Posts from "@/apis/Posts";
+import {useRoute, useRouter} from "vue-router";
+import config, { AdMenu } from "@/config/SectionConfig";
+import {useStore} from "vuex";
 
 export default defineComponent({
   name: "Home",
   setup(){
-    const posts = ref(null);
+    const preview = ref<Array<AdMenu>|Array<string>>([]);
+    const final = ref(false);
+    const routs = ref<Array<string>>(["home"]);
+    const route = useRoute();
+    const router = useRouter();
+    const store = useStore();
 
     onMounted(()=>{
-      Posts.getAllPosts().then(data =>{
-        posts.value = data.data;
-      }).catch(error => {
-        console.log(error);
-      });
+      preview.value = config;
     });
 
-    const getData = (pageId) => {
-      Posts.getCurrentPagePosts(pageId).then(data =>{
-        posts.value = data.data;
-      }).catch(error => {
-        console.log(error);
-      });
+    const resetPreview = (child: AdMenu) => {
+      if(typeof child.child[0] === 'string'){
+        final.value = true;
+      } else {
+        routs.value.push(child.name);
+      }
+      preview.value = child.child;
     }
 
-    const getLink = (postId) => {
-      return "/post_page/"+postId;
-    }
+    const next = (new_config) => {
+      store.dispatch(Actions.SET_CURRENT_CONFIG_ACTION, new_config);
+      router.push(route.path + new_config.name);
+
+    };
 
     return {
-      posts,
-      getData,
-      getLink
+      preview,
+      resetPreview,
+      final,
+      routs,
+      next
     }
   }
 });

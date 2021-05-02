@@ -12,6 +12,26 @@ const routes = [
               component: () => import("../views/Home.vue")
           },
           {
+              path: "/home/:sec1",
+              name: "sec1",
+              component: () => import("../views/Home.vue")
+          },
+          {
+              path: "/home/:sec1/:sec2",
+              name: "sec2",
+              component: () => import("../views/Home.vue")
+          },
+          {
+              path: "/home/:sec1/:sec2/:sec3",
+              name: "sec3",
+              component: () => import("../views/Home.vue")
+          },
+          {
+              path: "/home/:sec1/:sec2/:sec3/:sec4",
+              name: "sec4",
+              component: () => import("../views/Home.vue")
+          },
+          {
               path: "/about",
               name: "About",
               component: () => import("../views/About.vue")
@@ -47,6 +67,11 @@ const routes = [
         path: "/landing",
         name: "landing",
         component: () => import("../views/test/Landing.vue")
+    },
+    {
+        path: "/landing2",
+        name: "landing2",
+        component: () => import("../views/test/Landing2.vue")
     },
   {
     path: "/login",
