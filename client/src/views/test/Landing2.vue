@@ -2,7 +2,7 @@
   <div class="section1"></div>
   <div class="header">
     <div class="logo">
-      <img class="logo-img" src="media/landing2/Logo.png" alt="Logo">
+      <img class="logo-img" src="media/landing2/Logo.png" alt="Logo" />
       <h1 class="logo-text">CaliHeals</h1>
     </div>
     <ul>
@@ -18,7 +18,7 @@
 
 <style lang="scss" scoped>
 * {
- box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .section1 {
@@ -34,7 +34,7 @@
   color: white;
   display: flex;
 
-  .logo{
+  .logo {
     display: flex;
   }
 
@@ -67,7 +67,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name:"",
+  name: "",
   components: {}
-})
+});
 </script>

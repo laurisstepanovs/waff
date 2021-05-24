@@ -21,7 +21,9 @@
                   <el-dropdown-item>Profile</el-dropdown-item>
                   <el-dropdown-item>My advertisement</el-dropdown-item>
                   <el-dropdown-item>Settings</el-dropdown-item>
-                  <el-dropdown-item @click="toAdvertisement()">New advertisement</el-dropdown-item>
+                  <el-dropdown-item @click="toAdvertisement()"
+                    >New advertisement</el-dropdown-item
+                  >
                   <el-dropdown-item @click="logout()">Logout</el-dropdown-item>
                 </el-dropdown-menu>
               </template>
@@ -30,7 +32,11 @@
         </el-col>
       </el-row>
     </el-header>
-    <el-page-header v-if="getSectionTitle" @back="goBack()" :content="getSectionTitle">
+    <el-page-header
+      v-if="getSectionTitle"
+      @back="goBack()"
+      :content="getSectionTitle"
+    >
     </el-page-header>
     <el-main>
       <router-view />
@@ -44,89 +50,95 @@ import User from "@/apis/User";
 import { useRouter, useRoute } from "vue-router";
 
 export default defineComponent({
-    name: "Layout",
-    setup(){
-        const router = useRouter();
-        const route = useRoute();
+  name: "Layout",
+  setup() {
+    const router = useRouter();
+    const route = useRoute();
 
-        if(!window.localStorage.getItem("token")){
-            router.push({ name: 'login' });
-        }
-
-        const isAuth = computed(() => {
-            return !!window.localStorage.getItem("token")
-        });
-
-        const logout = () => {
-            User.logout().then(data =>{
-                window.localStorage.removeItem("token");
-                console.log(data);
-                router.push({ name: 'login' });
-            }).catch(response => {
-                alert(response);
-            });
-        }
-
-        const toAdvertisement = () => {
-          router.push({name: 'new_post'});
-        }
-
-        const goBack = () => {
-          router.go(-1);
-        }
-
-        const getSectionTitle = computed(() => {
-          if (route.params.section){
-            return (route.params.section.charAt(0).toUpperCase() + route.params.section.slice(1));
-          }
-        });
-
-        return {
-            logout,
-            isAuth,
-            toAdvertisement,
-            goBack,
-            getSectionTitle
-        }
+    if (!window.localStorage.getItem("token")) {
+      router.push({ name: "login" });
     }
+
+    const isAuth = computed(() => {
+      return !!window.localStorage.getItem("token");
+    });
+
+    const logout = () => {
+      User.logout()
+        .then(data => {
+          window.localStorage.removeItem("token");
+          console.log(data);
+          router.push({ name: "login" });
+        })
+        .catch(response => {
+          alert(response);
+        });
+    };
+
+    const toAdvertisement = () => {
+      router.push({ name: "new_post" });
+    };
+
+    const goBack = () => {
+      router.go(-1);
+    };
+
+    const getSectionTitle = computed(() => {
+      if (route.params.section) {
+        return (
+          route.params.section.charAt(0).toUpperCase() +
+          route.params.section.slice(1)
+        );
+      }
+    });
+
+    return {
+      logout,
+      isAuth,
+      toAdvertisement,
+      goBack,
+      getSectionTitle
+    };
+  }
 });
 </script>
 
 <style lang="scss">
-    .el-header {
-      background-color: #409EFF;
-    }
+.el-header {
+  background-color: #409eff;
+}
 
-    .el-footer {
-      background-color: #cbd5e0;
-    }
+.el-footer {
+  background-color: #cbd5e0;
+}
 
-    .reset {
-      margin:0;
-    }
+.reset {
+  margin: 0;
+}
 
-    .header-button {
-      margin-top: 7px;
-      margin-left: 5px;
-    }
+.header-button {
+  margin-top: 7px;
+  margin-left: 5px;
+}
 
-    .text-color{
-      color:rgb(217, 236, 255);
-    }
+.text-color {
+  color: rgb(217, 236, 255);
+}
 
-    a {
-      text-decoration: none;
-    }
+a {
+  text-decoration: none;
+}
 
-    .el-page-header {
-      padding: 20px 5px 20px 5px;
-      border: 1px solid #d7dae2;
-      border-radius: 4px;
-    }
+.el-page-header {
+  padding: 20px 5px 20px 5px;
+  border: 1px solid #d7dae2;
+  border-radius: 4px;
+}
 
-    @media only screen and (max-width: 425px) {
-      .el-card__body, .el-main {
-        padding: 0;
-      }
-    }
+@media only screen and (max-width: 425px) {
+  .el-card__body,
+  .el-main {
+    padding: 0;
+  }
+}
 </style>

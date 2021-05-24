@@ -3,7 +3,7 @@
     <form @submit.prevent="addRequest()">
       <h1>Add new post</h1>
       <label for="title">Post title</label>
-      <input v-model="form.title" id="title" type="text">
+      <input v-model="form.title" id="title" type="text" />
       <label for="section">Section</label>
       <el-cascader :options="options" clearable></el-cascader>
       <select name="section" id="section" v-model="form.section">
@@ -12,7 +12,7 @@
       </select>
       <label for="desc">Description</label>
       <textarea v-model="form.desc" id="desc" type="password" />
-      <input type="file" @change="setFile">
+      <input type="file" @change="setFile" />
       <button type="submit">Add</button>
     </form>
   </div>
@@ -25,7 +25,7 @@
   background-color: #cbd5e0;
   padding: 20px;
 
-  h1{
+  h1 {
     margin-top: 10px;
     margin-bottom: 10px;
   }
@@ -86,17 +86,17 @@
 <script>
 import { defineComponent, ref } from "vue";
 import Posts from "@/apis/Posts";
-import {useRouter} from "vue-router";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "NewPost",
-  setup(){
+  setup() {
     const form = ref({
       title: "",
       section: "Cars",
       image: "",
       desc: ""
-    })
+    });
 
     const errors = ref(null);
 
@@ -110,24 +110,26 @@ export default defineComponent({
       formData.append("image", form.value.image);
       formData.append("desc", form.value.desc);
 
-      Posts.addNew(formData).then(data =>{
-        console.log(data);
-        router.push({ path: 'home' });
-      }).catch(error => {
-        console.log(error);
-      });
-    }
+      Posts.addNew(formData)
+        .then(data => {
+          console.log(data);
+          router.push({ path: "home" });
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    };
 
-    const setFile = (e) => {
+    const setFile = e => {
       form.value.image = e.target.files[0];
-    }
+    };
 
     return {
       form,
       addRequest,
       errors,
       setFile
-    }
+    };
   }
-})
+});
 </script>
