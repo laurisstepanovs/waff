@@ -41,12 +41,12 @@ export default defineComponent({
   setup() {
     const router = useRouter();
 
-         const form = ref({
-             name: "",
-             email: "",
-             password: "",
-             passwordConfirmation:""
-         });
+    const form = ref({
+      name: "",
+      email: "",
+      password: "",
+      passwordConfirmation: ""
+    });
 
     const errors = ref(null);
 
@@ -61,7 +61,10 @@ export default defineComponent({
           router.push({ path: "home" });
         })
         .catch(error => {
-          errors.value = error.response.data.errors[Object.keys(error.response.data.errors)[0]][0];
+          errors.value =
+            error.response.data.errors[
+              Object.keys(error.response.data.errors)[0]
+            ][0];
         });
     };
 

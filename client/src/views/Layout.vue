@@ -89,6 +89,34 @@ export default defineComponent({
           route.params.section.charAt(0).toUpperCase() +
           route.params.section.slice(1)
         );
+      } else {
+        if (route.params.sec4) {
+          return (
+            route.params.sec4.charAt(0).toUpperCase() +
+            route.params.sec4.slice(1)
+          );
+        } else {
+          if (route.params.sec3) {
+            return (
+              route.params.sec3.charAt(0).toUpperCase() +
+              route.params.sec3.slice(1)
+            );
+          } else {
+            if (route.params.sec2) {
+              return (
+                route.params.sec2.charAt(0).toUpperCase() +
+                route.params.sec2.slice(1)
+              );
+            } else {
+              if (route.params.sec1) {
+                return (
+                  route.params.sec1.charAt(0).toUpperCase() +
+                  route.params.sec1.slice(1)
+                );
+              }
+            }
+          }
+        }
       }
     });
 
